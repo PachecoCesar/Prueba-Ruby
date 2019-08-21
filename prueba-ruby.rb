@@ -56,14 +56,14 @@ while choice != 4
 
   def approval
     grades = read_alum('alumnos.csv')
-    puts 'Ingresa una nota entre 0 y 10, al presionar enter la nota sera 5.0'
+    puts 'Ingresa la nota de aprovacion. Esta debe ser entre 1 y 10. Al presionar Enter la nota por defecto sera 5.0'
     num = gets.chomp.to_f
     if num >= 0 && num <= 10
       grades.each do |sum_grades|
         sum = 0
         total_grades = sum_grades.size - 1
         sum_grades.each_with_index do |grades, index|
-          sum += grades.to_i if index !=0
+          sum += grades.to_i if index != 0
         end
         average = sum / total_grades.to_f
         puts " El alumno #{sum_grades[0]} aprovo con un #{average}" if average >= 5 && num == 0
@@ -72,7 +72,7 @@ while choice != 4
         puts " El alumno #{sum_grades[0]} reprovo con un #{average}" if average < num && num != 0
       end
     else
-      puts 'ingresa un muero valido, este debe ser entre 0 y 10'
+      puts 'ingresa un muero valido, este debe ser entre 1 y 10'
     end
   end
 
