@@ -5,7 +5,6 @@ file.close
 alum
 end
 
-
 choice = 0
 while choice != 4
   puts(
@@ -17,26 +16,36 @@ while choice != 4
 
     choice = gets.chomp.to_i
 
-    def average
-      grades = read_alum('alumnos.csv')
-      grades.each do |sum_grades|
-        sum = 0
-        total_grades = sum_grades.size - 1
-        sum_grades.each_with_index do |grades, index|
-          sum += grades.to_i if index != 0
-          sum = 0 if grades == 'A'
-        end
-        average = sum / total_grades.to_f
-        puts "El promedio del alumno #{sum_grades [0]} es #{average}"
-      end
+def average
+  grades = read_alum('alumnos.csv')
+  grades.each do |sum_grades|
+    sum = 0
+    total_grades = sum_grades.size - 1
+    sum_grades.each_with_index do |grades, index|
+      sum += grades.to_i if index != 0
     end
+    average = sum / total_grades.to_f
+    puts "El promedio del alumno #{sum_grades [0]} es #{average}"
+  end
+end
+
+def absence
+  grades = read_alum('alumnos.csv')
+  grades.each do |unattended|
+    count = 0
+    unattended.each_with_index do|grades, index|
+      count += 1 if grades == 'A' && index != 0
+    end
+    puts "El alumno #{unattended [0]} tuvo #{count} inasistencias"
+  end
+end
 
     case choice
     when 1
       average
       puts '-----------------------------------------------------'
     when 2
-      average
+      absence
       puts '-----------------------------------------------------'
     when 3
       average
