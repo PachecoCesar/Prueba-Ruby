@@ -14,7 +14,7 @@ while choice != 4
     3)  Alumnos Aprovados.-
     4)  Salir del menu.-')
 
-    choice = gets.chomp.to_i
+  choice = gets.chomp.to_i
 
   def average
     grades = read_alum('alumnos.csv')
